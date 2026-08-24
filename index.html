@@ -46,6 +46,12 @@
     "longitude": 39.6488369
   },
   "areaServed": "SA",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "61",
+    "bestRating": "5"
+  },
   "sameAs": [
     "https://www.instagram.com/salahlawoffice",
     "https://x.com/salahlawoffice",
@@ -421,6 +427,24 @@ html[dir="rtl"] .fg- select{background-position:right 14px center;padding-left:1
 .bdir{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;border-radius:8px;font-size:12.5px;font-weight:600;text-decoration:none;transition:var(--ease);white-space:nowrap;flex-shrink:0}
 .bdir:hover{transform:translateY(-2px);box-shadow:0 4px 12px var(--shp)}
 
+/* ============================================================ REVIEWS */
+.rev-sec{margin-top:56px;padding-top:48px;border-top:1px solid var(--br)}
+.rev-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:28px}
+.rev-tt h3{font-size:22px;font-weight:800;color:var(--tx);margin-bottom:6px}
+.rev-score{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--tx2)}
+.rev-score .stars i{color:#F5A623;font-size:13px}
+.rev-score b{color:var(--tx);font-weight:800}
+.rev-all{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border:1.5px solid var(--br);border-radius:9px;font-size:13px;font-weight:600;color:var(--tx2);transition:var(--ease);text-decoration:none;white-space:nowrap}
+.rev-all:hover{border-color:var(--p);color:var(--p)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev-card{background:var(--card);border:1px solid var(--br);border-radius:var(--rl);padding:24px}
+.rev-top{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+.rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.rev-nm{font-size:13.5px;font-weight:700;color:var(--tx)}
+.rev-dt{font-size:11px;color:var(--tx3)}
+.rev-stars i{color:#F5A623;font-size:11px;margin-bottom:8px;display:block}
+.rev-txt{font-size:13.5px;color:var(--tx2);line-height:1.85}
+
 /* ============================================================ FOOTER */
 footer{background:var(--nv);color:rgba(255,255,255,.75);padding:52px 0 22px}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:38px}
@@ -479,6 +503,8 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   .ab-grid{grid-template-columns:1fr;gap:44px}
   .ct-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .rev-head{flex-direction:column;align-items:flex-start}
   .fg{grid-template-columns:1fr;gap:24px}
   .fbtm{flex-direction:column;text-align:center}
   .h-stats{gap:0}
@@ -886,6 +912,45 @@ html[dir="ltr"] .fbtn .tip{right:60px}
             <p><i class="fas fa-map-marker-alt" style="color:var(--p);margin-inline-end:5px"></i><span class="ar-text">المدينة المنورة، شارع الأمير محمد بن عبد العزيز</span><span class="en-text">Madinah, Prince Mohammed bin Abdulaziz St.</span></p>
             <a href="https://www.google.com/maps/place/%D9%85%D9%83%D8%AA%D8%A8+%D8%A7%D9%84%D9%85%D8%AD%D8%A7%D9%85%D9%8A%2F+%D8%B5%D9%84%D8%A7%D8%AD+%D8%A7%D9%84%D8%B9%D9%8A%D8%A7%D8%B6%D9%8A%E2%80%AD/@24.4726582,39.6514065,17z/data=!4m6!3m5!1s0x15bdbf6835d8474d:0xee338e23c8118d7e!8m2!3d24.4726582!4d39.6488369!16s%2Fg%2F11l6_4zsrw" target="_blank" rel="noopener noreferrer" class="bdir"><i class="fas fa-directions"></i><span class="ar-text">احصل على الاتجاهات</span><span class="en-text">Get Directions</span></a>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-sec rv">
+      <div class="rev-head">
+        <div class="rev-tt">
+          <h3><span class="ar-text">آراء عملائنا على خرائط Google</span><span class="en-text">What Our Clients Say on Google</span></h3>
+          <div class="rev-score">
+            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+            <span><b>5.0</b> <span class="ar-text">من 61 تقييمًا</span><span class="en-text">from 61 reviews</span></span>
+          </div>
+        </div>
+        <a href="https://maps.app.goo.gl/9p5YyvudYT1zTHnUA" target="_blank" rel="noopener noreferrer" class="rev-all"><i class="fab fa-google"></i><span class="ar-text">شاهد كل التقييمات</span><span class="en-text">See all reviews</span></a>
+      </div>
+      <div class="rev-grid">
+        <div class="rev-card">
+          <div class="rev-top">
+            <div class="rev-av">م</div>
+            <div><div class="rev-nm">ماجد البلوشي</div><div class="rev-dt"><span class="ar-text">قبل شهر</span><span class="en-text">1 month ago</span></div></div>
+          </div>
+          <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="rev-txt">الله يعطيه العافية، كنت محكوم في قضية أحوال شخصية (فسخ نكاح)، وبعدها وكلته يكتب لي اعتراض على الحكم اللي صدر ضدي فتحوا لنا ثلاث جلسات استئناف، وحضرها كلها، وكان يتابع القضية أول بأول ويشرح لي كل خطوة، ولله الحمد كسبنا القضية وانقلب الحكم.</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-top">
+            <div class="rev-av">F</div>
+            <div><div class="rev-nm">Fatima Backch</div><div class="rev-dt"><span class="ar-text">قبل شهر</span><span class="en-text">1 month ago</span></div></div>
+          </div>
+          <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="rev-txt">خالص الشكر والتقدير والاحترام للمحامي صلاح العياضي والمحاميه أسرار السهلي والمحامي فيصل على جهودهم المباركه، دمتم عزا وفخرا لنصرة الحق في قضية اخي ماجد.</p>
+        </div>
+        <div class="rev-card">
+          <div class="rev-top">
+            <div class="rev-av">Y</div>
+            <div><div class="rev-nm">Yasser Elkholy</div><div class="rev-dt"><span class="ar-text">قبل شهرين</span><span class="en-text">2 months ago</span></div></div>
+          </div>
+          <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="rev-txt">ما شاء الله تبارك الله، شهادتي فيه مجروحة، أستاذ صلاح قمة في المهنية والأخلاق ما شاء الله.</p>
         </div>
       </div>
     </div>
