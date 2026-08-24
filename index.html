@@ -439,15 +439,21 @@ footer{background:var(--nv);color:rgba(255,255,255,.75);padding:52px 0 22px}
 .fbtm p{font-size:11.5px;color:rgba(255,255,255,.25)}
 .fbtm .ac{color:var(--pl)}
 
-/* ============================================================ WA FLOAT */
-.wa{position:fixed;bottom:26px;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;box-shadow:0 5px 20px rgba(37,211,102,.42);z-index:997;transition:var(--ease);text-decoration:none}
-html[dir="rtl"] .wa{left:24px}
-html[dir="ltr"] .wa{right:24px}
-.wa:hover{transform:scale(1.1) translateY(-3px);box-shadow:0 9px 28px rgba(37,211,102,.58)}
-.wa .tip{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.72);color:#fff;padding:5px 10px;border-radius:6px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none;transition:var(--ease)}
-html[dir="rtl"] .wa .tip{right:60px}
-html[dir="ltr"] .wa .tip{left:60px}
-.wa:hover .tip{opacity:1}
+/* ============================================================ FLOATING ACTION BUTTONS */
+.fab{position:fixed;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;z-index:997;transition:var(--ease);text-decoration:none}
+html[dir="rtl"] .fab{left:24px}
+html[dir="ltr"] .fab{right:24px}
+.fab:hover{transform:scale(1.1) translateY(-3px)}
+.fab .tip{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.72);color:#fff;padding:5px 10px;border-radius:6px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none;transition:var(--ease)}
+html[dir="rtl"] .fab .tip{right:60px}
+html[dir="ltr"] .fab .tip{left:60px}
+.fab:hover .tip{opacity:1}
+
+.fab-wa{bottom:26px;background:#25D366;box-shadow:0 5px 20px rgba(37,211,102,.42)}
+.fab-wa:hover{box-shadow:0 9px 28px rgba(37,211,102,.58)}
+
+.fab-call{bottom:90px;background:linear-gradient(135deg,var(--p),var(--pd));box-shadow:0 5px 20px var(--shp)}
+.fab-call:hover{box-shadow:0 9px 28px var(--shp)}
 
 /* ============================================================ REVEAL */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
@@ -938,7 +944,11 @@ html[dir="ltr"] .wa .tip{left:60px}
   </div>
 </footer>
 
-<a href="https://wa.me/966560064478" target="_blank" rel="noopener noreferrer" class="wa" aria-label="WhatsApp">
+<a href="tel:+966560064478" class="fab fab-call" aria-label="اتصال مباشر" data-al-ar="اتصال مباشر" data-al-en="Direct Call">
+  <i class="fas fa-phone"></i>
+  <span class="tip"><span class="ar-text">اتصال مباشر</span><span class="en-text">Direct Call</span></span>
+</a>
+<a href="https://wa.me/966560064478" target="_blank" rel="noopener noreferrer" class="fab fab-wa" aria-label="WhatsApp">
   <i class="fab fa-whatsapp"></i>
   <span class="tip"><span class="ar-text">تواصل واتساب</span><span class="en-text">WhatsApp</span></span>
 </a>
