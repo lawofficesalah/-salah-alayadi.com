@@ -47,9 +47,10 @@
   },
   "areaServed": "SA",
   "sameAs": [
-    "https://www.instagram.com/lawoffice.salah",
+    "https://www.instagram.com/salahlawoffice",
     "https://x.com/salahlawoffice",
     "https://www.facebook.com/lawyersalahoffice/",
+    "https://www.snapchat.com/add/salahlawoffice",
     "https://www.tiktok.com/@salahlawoffice",
     "https://www.linkedin.com/in/salahlawoffice/",
     "https://www.youtube.com/@salahlawoffice",
@@ -78,8 +79,8 @@
 <style>
 /* ============================================================ VARIABLES */
 :root{
-  --p:#775C72; --pl:#9A7A95; --pd:#5A4358; --pxd:#3E2C3A;
-  --nv:#1A0F18; --nv2:#261622; --nv3:#321E2E;
+  --p:#775C72; --pl:#9A7A95; --pd:#5A4358;
+  --nv:#1A0F18; --nv2:#261622;
   --bg:#F7F3F6; --bg2:#FFFFFF; --card:#FFFFFF;
   --tx:#1A0F18; --tx2:#4A3A47; --tx3:#8A7A87;
   --br:#EAE0E8; --sh:rgba(26,15,24,.1); --shp:rgba(119,92,114,.25);
@@ -87,7 +88,7 @@
   --r:10px; --rl:18px;
 }
 [data-theme="dark"]{
-  --nv:#090909; --nv2:#101010; --nv3:#161616;
+  --nv:#090909; --nv2:#101010;
   --bg:#0C0C0C; --bg2:#131313; --card:#191919;
   --tx:#E4E4E4; --tx2:#949494; --tx3:#565656;
   --br:#252525; --sh:rgba(0,0,0,.65); --shp:rgba(119,92,114,.32);
@@ -122,7 +123,7 @@ html[lang="en"] .en-block{display:block}
 
 /* ============================================================ HEADER */
 header{position:fixed;inset:0 0 auto;z-index:1000;transition:var(--ease)}
-header.sc{background:rgba(var(--bg2-raw,255,255,255),.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 24px var(--sh);border-bottom:1px solid var(--br)}
+header.sc{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 24px var(--sh);border-bottom:1px solid var(--br)}
 [data-theme="dark"] header.sc{background:rgba(12,12,12,.97)}
 
 nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1180px;margin:0 auto;gap:12px}
@@ -470,7 +471,6 @@ html[dir="ltr"] .wa .tip{left:60px}
   .nl{display:none}
   .hbg{display:flex}
   .ab-grid{grid-template-columns:1fr;gap:44px}
-  .ab-frame{max-width:320px;margin:0 auto}
   .ct-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
   .fg{grid-template-columns:1fr;gap:24px}
@@ -533,8 +533,8 @@ html[dir="ltr"] .wa .tip{left:60px}
 </div>
 
 <!-- ═══════════════ HERO ═══════════════ -->
-<section id="home" class="hero" id="heroSec">
-  <div class="hero-bg" id="heroBg"></div>
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-ov"></div>
   <div class="hero-grain"></div>
 
@@ -897,10 +897,10 @@ html[dir="ltr"] .wa .tip{left:60px}
         </div>
         <p class="fb-desc"><span class="ar-text">مكتب قانوني متخصص في المدينة المنورة يقدم أرقى الخدمات القانونية للأفراد والشركات في المملكة العربية السعودية.</span><span class="en-text">A specialized law office in Madinah providing premium legal services to individuals and companies in Saudi Arabia.</span></p>
         <div class="fb-sc">
-          <a href="https://www.instagram.com/lawoffice.salah" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.instagram.com/salahlawoffice" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
           <a href="https://x.com/salahlawoffice"             target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
           <a href="https://www.facebook.com/lawyersalahoffice/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-snapchat"></i></a>
+          <a href="https://www.snapchat.com/add/salahlawoffice" target="_blank" rel="noopener noreferrer"><i class="fab fa-snapchat"></i></a>
           <a href="https://www.tiktok.com/@salahlawoffice"    target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
           <a href="https://www.linkedin.com/in/salahlawoffice/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://www.youtube.com/@salahlawoffice"   target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
@@ -972,7 +972,7 @@ const navAs=document.querySelectorAll('.na');
 window.addEventListener('scroll',()=>{
   hdr.classList.toggle('sc',window.scrollY>60);
   let cur='home';
-  document.querySelectorAll('section[id],div[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-140)cur=s.id});
+  document.querySelectorAll('#home,#about,#video-sec,#services,#faq,#booking,#contact').forEach(s=>{if(window.scrollY>=s.offsetTop-140)cur=s.id});
   navAs.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+cur)a.classList.add('active')});
 });
 
@@ -1054,13 +1054,14 @@ document.getElementById('bkForm').addEventListener('submit',function(e){
   e.preventDefault();
   const name=document.getElementById('bkName').value.trim();
   const phone=document.getElementById('bkPhone').value.trim();
-  const type=document.getElementById('bkType').value||'غير محدد';
   const msg=document.getElementById('bkMsg').value.trim();
+  const isAr=document.documentElement.lang==='ar';
+  const typeSelect=document.getElementById('bkType');
+  const type=typeSelect.value?typeSelect.selectedOptions[0].textContent:(isAr?'غير محدد':'Not specified');
   if(!name||!phone){
-    alert(document.documentElement.lang==='ar'?'يرجى إدخال الاسم ورقم الجوال على الأقل.':'Please enter your name and phone number.');
+    alert(isAr?'يرجى إدخال الاسم ورقم الجوال على الأقل.':'Please enter your name and phone number.');
     return;
   }
-  const isAr=document.documentElement.lang==='ar';
   const txt=isAr
     ?`السلام عليكم،\n\n📋 *طلب استشارة قانونية*\n\n👤 الاسم: ${name}\n📞 الجوال: ${phone}\n⚖️ نوع الاستشارة: ${type}${msg?'\n📝 ملخص: '+msg:''}\n\nأرجو التواصل لتحديد الموعد المناسب. شكراً.`
     :`Hello,\n\n📋 *Legal Consultation Request*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n⚖️ Type: ${type}${msg?'\n📝 Details: '+msg:''}\n\nPlease contact me to schedule an appointment. Thank you.`;
