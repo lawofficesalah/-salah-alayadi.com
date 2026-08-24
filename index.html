@@ -168,17 +168,18 @@ html[dir="ltr"] .mmx{left:22px}
 .hero-bg{
   position:absolute;inset:0;
   background:url('madina.jpg') center 40%/cover no-repeat;
+  filter:brightness(1.3) saturate(1.05);
   transform:scale(1.05);
   transition:transform 8s ease;
 }
 .hero.loaded .hero-bg{transform:scale(1)}
 
-/* layered overlay: dark base + brand color tint */
+/* layered overlay: light base + brand color tint (kept light so the photo reads bright) */
 .hero-ov{
   position:absolute;inset:0;
   background:
-    linear-gradient(to bottom, rgba(26,15,24,.3) 0%, rgba(26,15,24,.55) 40%, rgba(26,15,24,.88) 100%),
-    linear-gradient(135deg, rgba(58,28,58,.45) 0%, transparent 60%);
+    linear-gradient(to bottom, rgba(26,15,24,.08) 0%, rgba(26,15,24,.22) 40%, rgba(26,15,24,.5) 100%),
+    linear-gradient(135deg, rgba(58,28,58,.22) 0%, transparent 60%);
 }
 
 /* subtle dot grain */
@@ -196,16 +197,16 @@ html[dir="ltr"] .mmx{left:22px}
 
 .h-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(119,92,114,.22);border:1px solid rgba(154,122,149,.4);color:var(--pl);padding:7px 20px;border-radius:50px;font-size:13px;font-weight:700;margin-bottom:20px;letter-spacing:.8px}
 
-.hero h1{font-size:clamp(32px,5.4vw,65px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+.hero h1{font-size:clamp(32px,5.4vw,65px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:8px;text-shadow:0 2px 6px rgba(0,0,0,.65),0 4px 26px rgba(0,0,0,.55)}
 .hero h1 .ac{color:var(--pl)}
 .hdv{width:56px;height:3px;background:linear-gradient(90deg,var(--pl),var(--p));margin:16px auto 22px;border-radius:2px}
-.h-sub{font-size:clamp(14px,1.9vw,17px);color:rgba(255,255,255,.68);margin-bottom:40px;font-weight:300;line-height:1.8;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.h-sub{font-size:clamp(14px,1.9vw,17px);color:rgba(255,255,255,.92);margin-bottom:40px;font-weight:300;line-height:1.8;text-shadow:0 1px 4px rgba(0,0,0,.6),0 2px 14px rgba(0,0,0,.5)}
 
 .h-stats{display:flex;justify-content:center;gap:0;margin-bottom:44px;flex-wrap:wrap}
 .ctr{padding:0 40px;text-align:center;border-inline-end:1px solid rgba(255,255,255,.15)}
 .ctr:last-child{border-inline-end:none}
 .ctr .n{font-size:38px;font-weight:900;color:var(--pl);line-height:1;margin-bottom:4px}
-.ctr .l{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.3px}
+.ctr .l{font-size:11px;color:rgba(255,255,255,.8);letter-spacing:.3px;text-shadow:0 1px 4px rgba(0,0,0,.55)}
 
 .h-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
 .bm{padding:13px 32px;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer;transition:var(--ease);font-family:inherit;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px var(--shp);text-decoration:none}
@@ -326,15 +327,15 @@ html[dir="ltr"] .dv-item:hover{transform:translateX(3px)}
 
 /* ============================================================ MADINAH */
 .mad{position:relative;overflow:hidden;padding:0;min-height:480px;display:flex;align-items:center}
-.mad-bg{position:absolute;inset:0;background:url('madina.jpg') center 40%/cover no-repeat;filter:brightness(.38) saturate(.7);transition:transform 7s ease}
+.mad-bg{position:absolute;inset:0;background:url('madina.jpg') center 40%/cover no-repeat;filter:brightness(.85) saturate(.95);transition:transform 7s ease}
 .mad:hover .mad-bg{transform:scale(1.03)}
-.mad-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,15,24,.2) 0%,rgba(26,15,24,.5) 55%,rgba(26,15,24,.9) 100%)}
+.mad-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,15,24,.05) 0%,rgba(26,15,24,.2) 55%,rgba(26,15,24,.55) 100%)}
 .mad-cnt{position:relative;z-index:1;max-width:880px;margin:0 auto;text-align:center;padding:68px 24px}
 .mad-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(119,92,114,.2);border:1px solid rgba(154,122,149,.35);color:var(--pl);padding:7px 18px;border-radius:50px;font-size:12px;font-weight:600;margin-bottom:22px}
-.mad-title{font-size:clamp(26px,4.6vw,55px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:12px}
+.mad-title{font-size:clamp(26px,4.6vw,55px);font-weight:900;color:#fff;line-height:1.2;margin-bottom:12px;text-shadow:0 2px 6px rgba(0,0,0,.65),0 4px 26px rgba(0,0,0,.55)}
 .mad-title span{color:var(--pl)}
 .mad-sdv{width:54px;height:3px;background:linear-gradient(90deg,var(--pl),var(--p));margin:12px auto;border-radius:2px}
-.mad-sub{font-size:clamp(13px,1.7vw,16px);color:rgba(255,255,255,.62);margin-bottom:32px}
+.mad-sub{font-size:clamp(13px,1.7vw,16px);color:rgba(255,255,255,.92);margin-bottom:32px;text-shadow:0 1px 4px rgba(0,0,0,.6),0 2px 14px rgba(0,0,0,.5)}
 .mad-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
 .mad-ci{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:9px;padding:10px 18px;font-size:13px;font-weight:500;color:rgba(255,255,255,.82);transition:var(--ease);text-decoration:none}
 .mad-ci i{color:var(--pl);font-size:14px}
@@ -513,9 +514,9 @@ html[dir="ltr"] .wa .tip{left:60px}
     </ul>
 
     <div class="nc">
-      <button class="btn-icon" id="themeBtn" aria-label="تبديل المظهر"><i class="fas fa-moon" id="themeIco"></i></button>
+      <button class="btn-icon" id="themeBtn" aria-label="تبديل المظهر" data-al-ar="تبديل المظهر" data-al-en="Toggle theme"><i class="fas fa-moon" id="themeIco"></i></button>
       <button class="btn-icon btn-lang" id="langBtn"><i class="fas fa-globe"></i><span id="langLbl">EN</span></button>
-      <button class="hbg" id="ham" aria-label="القائمة"><span></span><span></span><span></span></button>
+      <button class="hbg" id="ham" aria-label="القائمة" data-al-ar="القائمة" data-al-en="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 </header>
@@ -598,7 +599,7 @@ html[dir="ltr"] .wa .tip{left:60px}
           <video id="officeVideo" autoplay muted loop playsinline preload="auto">
             <source src="hero-video.mp4" type="video/mp4"/>
           </video>
-          <button class="sound-btn" id="soundBtn" onclick="toggleSound()" title="تشغيل/إيقاف الصوت">
+          <button class="sound-btn" id="soundBtn" onclick="toggleSound()" title="تشغيل/إيقاف الصوت" data-al-ar="تشغيل/إيقاف الصوت" data-al-en="Toggle sound">
             <i class="fas fa-volume-xmark" id="soundIco"></i>
           </button>
         </div>
@@ -807,7 +808,7 @@ html[dir="ltr"] .wa .tip{left:60px}
         <div class="frow">
           <div class="fg-">
             <label for="bkName"><span class="ar-text">الاسم الكريم</span><span class="en-text">Full Name</span></label>
-            <input type="text" id="bkName" name="name" placeholder="أدخل اسمك الكريم" required/>
+            <input type="text" id="bkName" name="name" placeholder="أدخل اسمك الكريم" data-ph-ar="أدخل اسمك الكريم" data-ph-en="Enter your full name" required/>
           </div>
           <div class="fg-">
             <label for="bkPhone"><span class="ar-text">رقم الجوال</span><span class="en-text">Phone Number</span></label>
@@ -817,19 +818,19 @@ html[dir="ltr"] .wa .tip{left:60px}
         <div class="fg-">
           <label for="bkType"><span class="ar-text">نوع الاستشارة</span><span class="en-text">Consultation Type</span></label>
           <select id="bkType" name="type">
-            <option value=""><span class="ar-text">— اختر نوع الاستشارة —</span></option>
-            <option value="التقاضي والترافع">التقاضي والترافع</option>
-            <option value="قانون الشركات والتجاري">قانون الشركات والتجاري</option>
-            <option value="قضايا العقارات">قضايا العقارات</option>
-            <option value="الأحوال الشخصية والأسرة">الأحوال الشخصية والأسرة</option>
-            <option value="صياغة ومراجعة العقود">صياغة ومراجعة العقود</option>
-            <option value="التحكيم وفض النزاعات">التحكيم وفض النزاعات</option>
-            <option value="استشارة قانونية عامة">استشارة قانونية عامة</option>
+            <option value="" data-ar="— اختر نوع الاستشارة —" data-en="— Select consultation type —">— اختر نوع الاستشارة —</option>
+            <option value="التقاضي والترافع" data-ar="التقاضي والترافع" data-en="Litigation &amp; Advocacy">التقاضي والترافع</option>
+            <option value="قانون الشركات والتجاري" data-ar="قانون الشركات والتجاري" data-en="Corporate &amp; Business Law">قانون الشركات والتجاري</option>
+            <option value="قضايا العقارات" data-ar="قضايا العقارات" data-en="Real Estate Law">قضايا العقارات</option>
+            <option value="الأحوال الشخصية والأسرة" data-ar="الأحوال الشخصية والأسرة" data-en="Personal Status &amp; Family">الأحوال الشخصية والأسرة</option>
+            <option value="صياغة ومراجعة العقود" data-ar="صياغة ومراجعة العقود" data-en="Contract Drafting &amp; Review">صياغة ومراجعة العقود</option>
+            <option value="التحكيم وفض النزاعات" data-ar="التحكيم وفض النزاعات" data-en="Arbitration &amp; Dispute Resolution">التحكيم وفض النزاعات</option>
+            <option value="استشارة قانونية عامة" data-ar="استشارة قانونية عامة" data-en="General Legal Consultation">استشارة قانونية عامة</option>
           </select>
         </div>
         <div class="fg-">
           <label for="bkMsg"><span class="ar-text">ملخص موجز عن القضية أو الاستفسار</span><span class="en-text">Brief Summary</span></label>
-          <textarea id="bkMsg" name="message" placeholder="اكتب ملخصاً مختصراً لمساعدتنا في تقديم أفضل استشارة..."></textarea>
+          <textarea id="bkMsg" name="message" placeholder="اكتب ملخصاً مختصراً لمساعدتنا في تقديم أفضل استشارة..." data-ph-ar="اكتب ملخصاً مختصراً لمساعدتنا في تقديم أفضل استشارة..." data-ph-en="Write a brief summary to help us provide the best consultation..."></textarea>
         </div>
         <p class="bk-note"><i class="fab fa-whatsapp" style="color:#25D366;font-size:17px"></i><span class="ar-text">سيتم إرسال طلبك مباشرةً عبر واتساب لتأكيد الموعد</span><span class="en-text">Your request will be sent via WhatsApp to confirm your appointment</span></p>
         <button type="submit" class="bk-btn">
@@ -957,7 +958,11 @@ themeBtn.addEventListener('click',()=>applyTheme(html.getAttribute('data-theme')
 const langBtn=document.getElementById('langBtn');
 const langLbl=document.getElementById('langLbl');
 let lang=localStorage.getItem('lang')||'ar';
-function applyLang(l){html.setAttribute('lang',l);html.setAttribute('dir',l==='ar'?'rtl':'ltr');langLbl.textContent=l==='ar'?'EN':'AR';lang=l;localStorage.setItem('lang',l);const a=document.getElementById('heroArrow');if(a)a.className=l==='ar'?'fas fa-arrow-left':'fas fa-arrow-right'}
+function applyLang(l){html.setAttribute('lang',l);html.setAttribute('dir',l==='ar'?'rtl':'ltr');langLbl.textContent=l==='ar'?'EN':'AR';lang=l;localStorage.setItem('lang',l);const a=document.getElementById('heroArrow');if(a)a.className=l==='ar'?'fas fa-arrow-left':'fas fa-arrow-right';
+  document.querySelectorAll('[data-ph-ar]').forEach(el=>{el.placeholder=l==='ar'?el.dataset.phAr:el.dataset.phEn});
+  document.querySelectorAll('option[data-ar]').forEach(el=>{el.textContent=l==='ar'?el.dataset.ar:el.dataset.en});
+  document.querySelectorAll('[data-al-ar]').forEach(el=>{const v=l==='ar'?el.dataset.alAr:el.dataset.alEn;if(el.hasAttribute('aria-label'))el.setAttribute('aria-label',v);if(el.hasAttribute('title'))el.setAttribute('title',v)});
+}
 applyLang(lang);
 langBtn.addEventListener('click',()=>applyLang(lang==='ar'?'en':'ar'));
 
