@@ -438,11 +438,16 @@ html[dir="rtl"] .fg- select{background-position:right 14px center;padding-left:1
 .rev-all{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border:1.5px solid var(--br);border-radius:9px;font-size:13px;font-weight:600;color:var(--tx2);transition:var(--ease);text-decoration:none;white-space:nowrap}
 .rev-all:hover{border-color:var(--p);color:var(--p)}
 
+.rev-carousel{position:relative}
+.rev-arr{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:var(--card);border:1px solid var(--br);color:var(--tx2);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;z-index:5;box-shadow:0 4px 14px var(--sh);transition:var(--ease)}
+.rev-arr:hover{border-color:var(--p);color:var(--p);background:var(--bg2)}
+.rev-arr-l{left:-8px}
+.rev-arr-r{right:-8px}
 .rev-viewport{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
 .rev-viewport::-webkit-scrollbar{display:none}
 .rev-viewport:active{cursor:grabbing}
 .rev-track{display:flex;gap:16px;width:max-content}
-.rev-card{background:var(--card);border:1px solid var(--br);border-radius:var(--rl);padding:22px;flex:0 0 calc((100vw - 24px*2 - 16px*4)/5);max-width:calc((1180px - 16px*4)/5);scroll-snap-align:start;display:flex;flex-direction:column;min-height:220px}
+.rev-card{background:var(--card);border:1px solid var(--br);border-radius:var(--rl);padding:22px;flex:0 0 calc((100vw - 24px*2 - 16px*3)/4);max-width:calc((1180px - 16px*3)/4);scroll-snap-align:start;display:flex;flex-direction:column;min-height:220px}
 .rev-top{display:flex;align-items:center;gap:11px;margin-bottom:12px}
 .rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
 .rev-nm{font-size:13.5px;font-weight:700;color:var(--tx)}
@@ -511,6 +516,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   .ct-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
   .rev-head{flex-direction:column;align-items:flex-start}
+  .rev-arr{display:none}
   .rev-viewport{overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;max-height:calc(3*220px + 2*16px)}
   .rev-track{flex-direction:column;width:auto}
   .rev-card{flex:0 0 auto;width:100%;max-width:none;scroll-snap-align:start}
@@ -936,8 +942,12 @@ html[dir="ltr"] .fbtn .tip{right:60px}
         </div>
         <a href="https://maps.app.goo.gl/9p5YyvudYT1zTHnUA" target="_blank" rel="noopener noreferrer" class="rev-all"><i class="fab fa-google"></i><span class="ar-text">شاهد كل التقييمات</span><span class="en-text">See all reviews</span></a>
       </div>
-      <div class="rev-viewport" id="revViewport">
-        <div class="rev-track" id="revTrack"></div>
+      <div class="rev-carousel">
+        <button class="rev-arr rev-arr-l" id="revArrL" aria-label="السابق" data-al-ar="السابق" data-al-en="Previous"><i class="fas fa-chevron-left"></i></button>
+        <div class="rev-viewport" id="revViewport">
+          <div class="rev-track" id="revTrack"></div>
+        </div>
+        <button class="rev-arr rev-arr-r" id="revArrR" aria-label="التالي" data-al-ar="التالي" data-al-en="Next"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
   </div>
@@ -1154,7 +1164,9 @@ document.getElementById('bkForm').addEventListener('submit',function(e){
   track.innerHTML = REVIEWS.map(cardHTML).join('') + REVIEWS.map(cardHTML).join('');
 
   const total=REVIEWS.length;
-  let idx=0, paused=false, resumeTimer, timer;
+  let paused=false, resumeTimer, timer, wrapTimer;
+  const arrL=document.getElementById('revArrL');
+  const arrR=document.getElementById('revArrR');
 
   function isMobile(){ return window.innerWidth<=768; }
   function stepPx(){
@@ -1163,24 +1175,40 @@ document.getElementById('bkForm').addEventListener('submit',function(e){
     const gap=parseFloat(getComputedStyle(track).gap)||16;
     return isMobile()?(first.offsetHeight+gap):(first.offsetWidth+gap);
   }
-  function advance(){
-    if(paused) return;
-    idx++;
+
+  /* silently wraps scroll position back into range once a full set has been crossed,
+     works regardless of what triggered the scroll (autoplay, arrows, or drag) */
+  function scheduleWrapCheck(){
+    clearTimeout(wrapTimer);
+    wrapTimer=setTimeout(()=>{
+      const mobile=isMobile();
+      const setW=total*stepPx();
+      if(!setW) return;
+      const pos=mobile?viewport.scrollTop:viewport.scrollLeft;
+      let next=null;
+      if(pos<=-setW) next=pos+setW;
+      else if(pos>=setW) next=pos-setW;
+      if(next!==null){
+        viewport.style.scrollBehavior='auto';
+        if(mobile) viewport.scrollTop=next; else viewport.scrollLeft=next;
+        viewport.style.scrollBehavior='';
+      }
+    },550);
+  }
+
+  function moveBy(sign){
     const mobile=isMobile();
-    const sign=mobile?1:(html.dir==='rtl'?-1:1);
     const step=stepPx();
     if(mobile) viewport.scrollBy({top:sign*step,behavior:'smooth'});
     else viewport.scrollBy({left:sign*step,behavior:'smooth'});
-    if(idx>=total){
-      idx=0;
-      setTimeout(()=>{
-        const jump=total*stepPx();
-        viewport.style.scrollBehavior='auto';
-        if(mobile) viewport.scrollTop-=sign*jump;
-        else viewport.scrollLeft-=sign*jump;
-        viewport.style.scrollBehavior='';
-      },550);
-    }
+    scheduleWrapCheck();
+  }
+
+  function advance(){
+    if(paused) return;
+    const mobile=isMobile();
+    const sign=mobile?1:(html.dir==='rtl'?-1:1);
+    moveBy(sign);
   }
   timer=setInterval(advance,3800);
 
@@ -1193,6 +1221,10 @@ document.getElementById('bkForm').addEventListener('submit',function(e){
   ['pointerdown','wheel','touchstart'].forEach(evt=>viewport.addEventListener(evt,pauseThenResume,{passive:true}));
   viewport.addEventListener('mouseenter',()=>{paused=true;clearInterval(timer);});
   viewport.addEventListener('mouseleave',()=>{paused=false;clearInterval(timer);timer=setInterval(advance,3800);});
+
+  /* manual left/right arrow buttons — literal screen-position navigation, independent of language */
+  if(arrL) arrL.addEventListener('click',()=>{pauseThenResume();moveBy(-1);});
+  if(arrR) arrR.addEventListener('click',()=>{pauseThenResume();moveBy(1);});
 
   /* mouse drag-to-scroll (touch already gets native swipe) */
   let dragging=false,startX=0,startY=0,scrollStart=0;
@@ -1210,7 +1242,7 @@ document.getElementById('bkForm').addEventListener('submit',function(e){
     if(mobile) viewport.scrollTop=scrollStart-delta;
     else viewport.scrollLeft=scrollStart-delta;
   });
-  ['pointerup','pointercancel','pointerleave'].forEach(evt=>viewport.addEventListener(evt,()=>{dragging=false;}));
+  ['pointerup','pointercancel','pointerleave'].forEach(evt=>viewport.addEventListener(evt,()=>{dragging=false;scheduleWrapCheck();}));
 })();
 
 /* Video — autoplay muted, sound toggle */
