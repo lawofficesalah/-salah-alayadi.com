@@ -437,15 +437,19 @@ html[dir="rtl"] .fg- select{background-position:right 14px center;padding-left:1
 .rev-score b{color:var(--tx);font-weight:800}
 .rev-all{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border:1.5px solid var(--br);border-radius:9px;font-size:13px;font-weight:600;color:var(--tx2);transition:var(--ease);text-decoration:none;white-space:nowrap}
 .rev-all:hover{border-color:var(--p);color:var(--p)}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.rev-card{background:var(--card);border:1px solid var(--br);border-radius:var(--rl);padding:24px}
+
+.rev-viewport{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
+.rev-viewport::-webkit-scrollbar{display:none}
+.rev-viewport:active{cursor:grabbing}
+.rev-track{display:flex;gap:16px;width:max-content}
+.rev-card{background:var(--card);border:1px solid var(--br);border-radius:var(--rl);padding:22px;flex:0 0 calc((100vw - 24px*2 - 16px*4)/5);max-width:calc((1180px - 16px*4)/5);scroll-snap-align:start;display:flex;flex-direction:column;min-height:220px}
 .rev-top{display:flex;align-items:center;gap:11px;margin-bottom:12px}
 .rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
 .rev-nm{font-size:13.5px;font-weight:700;color:var(--tx)}
 .rev-dt{font-size:11px;color:var(--tx3)}
 .rev-stars{margin-bottom:8px}
 .rev-stars i{color:#F5A623;font-size:11px}
-.rev-txt{font-size:13.5px;color:var(--tx2);line-height:1.85}
+.rev-txt{font-size:13.5px;color:var(--tx2);line-height:1.85;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6}
 
 /* ============================================================ FOOTER */
 footer{background:var(--nv);color:rgba(255,255,255,.75);padding:52px 0 22px}
@@ -497,6 +501,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   .fg{grid-template-columns:1fr 1fr}
   .fg>*:first-child{grid-column:1/-1}
   .v-wrap{grid-template-columns:1fr;gap:32px}
+  .rev-card{flex-basis:calc((100vw - 24px*2 - 16px*2)/3);max-width:calc((1180px - 16px*2)/3)}
 }
 @media(max-width:768px){
   section{padding:64px 0}
@@ -505,8 +510,10 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   .ab-grid{grid-template-columns:1fr;gap:44px}
   .ct-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
-  .rev-grid{grid-template-columns:1fr}
   .rev-head{flex-direction:column;align-items:flex-start}
+  .rev-viewport{overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;max-height:calc(3*220px + 2*16px)}
+  .rev-track{flex-direction:column;width:auto}
+  .rev-card{flex:0 0 auto;width:100%;max-width:none;scroll-snap-align:start}
   .fg{grid-template-columns:1fr;gap:24px}
   .fbtm{flex-direction:column;text-align:center}
   .h-stats{gap:0}
@@ -929,31 +936,8 @@ html[dir="ltr"] .fbtn .tip{right:60px}
         </div>
         <a href="https://maps.app.goo.gl/9p5YyvudYT1zTHnUA" target="_blank" rel="noopener noreferrer" class="rev-all"><i class="fab fa-google"></i><span class="ar-text">شاهد كل التقييمات</span><span class="en-text">See all reviews</span></a>
       </div>
-      <div class="rev-grid">
-        <div class="rev-card">
-          <div class="rev-top">
-            <div class="rev-av">م</div>
-            <div><div class="rev-nm">ماجد البلوشي</div><div class="rev-dt"><span class="ar-text">قبل شهر</span><span class="en-text">1 month ago</span></div></div>
-          </div>
-          <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p class="rev-txt">الله يعطيه العافية، كنت محكوم في قضية أحوال شخصية (فسخ نكاح)، وبعدها وكلته يكتب لي اعتراض على الحكم اللي صدر ضدي فتحوا لنا ثلاث جلسات استئناف، وحضرها كلها، وكان يتابع القضية أول بأول ويشرح لي كل خطوة، ولله الحمد كسبنا القضية وانقلب الحكم.</p>
-        </div>
-        <div class="rev-card">
-          <div class="rev-top">
-            <div class="rev-av">F</div>
-            <div><div class="rev-nm">Fatima Backch</div><div class="rev-dt"><span class="ar-text">قبل شهر</span><span class="en-text">1 month ago</span></div></div>
-          </div>
-          <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p class="rev-txt">خالص الشكر والتقدير والاحترام للمحامي صلاح العياضي والمحاميه أسرار السهلي والمحامي فيصل على جهودهم المباركه، دمتم عزا وفخرا لنصرة الحق في قضية اخي ماجد.</p>
-        </div>
-        <div class="rev-card">
-          <div class="rev-top">
-            <div class="rev-av">Y</div>
-            <div><div class="rev-nm">Yasser Elkholy</div><div class="rev-dt"><span class="ar-text">قبل شهرين</span><span class="en-text">2 months ago</span></div></div>
-          </div>
-          <div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p class="rev-txt">ما شاء الله تبارك الله، شهادتي فيه مجروحة، أستاذ صلاح قمة في المهنية والأخلاق ما شاء الله.</p>
-        </div>
+      <div class="rev-viewport" id="revViewport">
+        <div class="rev-track" id="revTrack"></div>
       </div>
     </div>
   </div>
@@ -1144,6 +1128,90 @@ document.getElementById('bkForm').addEventListener('submit',function(e){
     :`Hello,\n\n📋 *Legal Consultation Request*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n⚖️ Type: ${type}${msg?'\n📝 Details: '+msg:''}\n\nPlease contact me to schedule an appointment. Thank you.`;
   window.open('https://wa.me/966560064478?text='+encodeURIComponent(txt),'_blank');
 });
+
+/* Reviews Carousel */
+(function(){
+  const REVIEWS=[
+    {i:'م',n:'ماجد البلوشي',da:'قبل شهر',de:'1 month ago',t:'الله يعطيه العافية، كنت محكوم في قضية أحوال شخصية (فسخ نكاح)، وبعدها وكلته يكتب لي اعتراض على الحكم اللي صدر ضدي فتحوا لنا ثلاث جلسات استئناف، وحضرها كلها، وكان يتابع القضية أول بأول ويشرح لي كل خطوة، ولله الحمد كسبنا القضية وانقلب الحكم.'},
+    {i:'M',n:'Mohammed',da:'قبل 9 أشهر',de:'9 months ago',t:'ماشاء الله تبارك الله، فاهم المكتب في الأوقاف والصياغة والشروط، ودقة في النظر في المعاني العميقة شرعًا وقانونًا ومتابعة مميزة، وفهمت موضوع الوقف كامل والوصية وشرح دراسة صك الوقفية، وكسبوا لي دعوى منازعة.'},
+    {i:'ب',n:'Beko',da:'قبل 9 أشهر',de:'9 months ago',t:'استفدت من المحامي صلاح العياضي في موضوع تقسيم التركات وطريقة التعامل مع الورثة، وللأمانة استفدت كثيرًا ونبهني عن نقاط كثيرة ما كنت أعرفها، وملم ماشاء الله في القانون والمحاماة، وأشكره جزيل الشكر.'},
+    {i:'A',n:'Abood Y',da:'قبل سنة',de:'1 year ago',t:'محامي مبدع متميز يعجز الكلام في وصفه، بفضل الله ثم بفضله وحنكته كسبت قضيتان مقامتان على إحدى الشركات التمويلية عام 1442هـ.'},
+    {i:'A',n:'Asim Sandokji',da:'قبل 10 أشهر',de:'10 months ago',t:'طلبنا مع الشركاء عمل عقد تنازل عن الحصص في الشركة، وأعجبني سرعة إنجاز المهمة والاحترافية في صياغة العقد ومناسبة التكلفة لذلك.'},
+    {i:'ي',n:'يوسف',da:'قبل 10 أشهر',de:'10 months ago',t:'طلبنا استشارة بخصوص عقد شركة لمجموعة شركاء وصياغة العقد، وما قصّر في التوضيح للأنظمة وإنجاز الخدمة بسرعة كبيرة وبتكلفة معقولة.'},
+    {i:'F',n:'Fa',da:'قبل 6 أشهر',de:'6 months ago',t:'قدّمت استشارة جنائية وحصلت عليها، وكان التعامل جدًا احترافي من الأستاذ صلاح، ألف شكر له، وأنصح بالتعامل معه جدًا، وشكر خاص للأخ لقمان.'},
+    {i:'ص',n:'صبحى صبحى',da:'قبل شهرين',de:'2 months ago',t:'من خيرة المحامين، ما شاء الله تبارك الله، طالب لي بمستحقاتي واستلمتها كاملة، بارك الله في جهودكم وعلمكم.'},
+    {i:'ب',n:'بدر الحربي',da:'قبل سنة',de:'1 year ago',t:'ما شاء الله تبارك الله، الأستاذ صلاح ما قصّر معي، استشرته في موضوع قضية ووجّهني للحل الأمثل وشرح لي جميع الأشياء والنقاط، ولم يأخذ مني ريال واحد. فاهم شغله والله يوفقه.'},
+    {i:'O',n:'Omar Alsufyani',da:'قبل سنة',de:'1 year ago',t:'أقدّم شكري وتقديري للأستاذ والمحامي صلاح العياضي لقاء تعامله الراقي معي أثناء وجود قضية ابني لديهم، فكان نعم الرجل القانوني المدرك لما يقوم به، ونعم الأخلاق.'}
+  ];
+
+  const track=document.getElementById('revTrack');
+  const viewport=document.getElementById('revViewport');
+  if(!track||!viewport) return;
+
+  function cardHTML(r){
+    return '<div class="rev-card"><div class="rev-top"><div class="rev-av">'+r.i+'</div><div><div class="rev-nm">'+r.n+'</div><div class="rev-dt"><span class="ar-text">'+r.da+'</span><span class="en-text">'+r.de+'</span></div></div></div><div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="rev-txt">'+r.t+'</p></div>';
+  }
+  track.innerHTML = REVIEWS.map(cardHTML).join('') + REVIEWS.map(cardHTML).join('');
+
+  const total=REVIEWS.length;
+  let idx=0, paused=false, resumeTimer, timer;
+
+  function isMobile(){ return window.innerWidth<=768; }
+  function stepPx(){
+    const first=track.querySelector('.rev-card');
+    if(!first) return 0;
+    const gap=parseFloat(getComputedStyle(track).gap)||16;
+    return isMobile()?(first.offsetHeight+gap):(first.offsetWidth+gap);
+  }
+  function advance(){
+    if(paused) return;
+    idx++;
+    const mobile=isMobile();
+    const sign=mobile?1:(html.dir==='rtl'?-1:1);
+    const step=stepPx();
+    if(mobile) viewport.scrollBy({top:sign*step,behavior:'smooth'});
+    else viewport.scrollBy({left:sign*step,behavior:'smooth'});
+    if(idx>=total){
+      idx=0;
+      setTimeout(()=>{
+        const jump=total*stepPx();
+        viewport.style.scrollBehavior='auto';
+        if(mobile) viewport.scrollTop-=sign*jump;
+        else viewport.scrollLeft-=sign*jump;
+        viewport.style.scrollBehavior='';
+      },550);
+    }
+  }
+  timer=setInterval(advance,3800);
+
+  function pauseThenResume(){
+    paused=true;
+    clearInterval(timer);
+    clearTimeout(resumeTimer);
+    resumeTimer=setTimeout(()=>{paused=false;timer=setInterval(advance,3800);},5000);
+  }
+  ['pointerdown','wheel','touchstart'].forEach(evt=>viewport.addEventListener(evt,pauseThenResume,{passive:true}));
+  viewport.addEventListener('mouseenter',()=>{paused=true;clearInterval(timer);});
+  viewport.addEventListener('mouseleave',()=>{paused=false;clearInterval(timer);timer=setInterval(advance,3800);});
+
+  /* mouse drag-to-scroll (touch already gets native swipe) */
+  let dragging=false,startX=0,startY=0,scrollStart=0;
+  viewport.addEventListener('pointerdown',e=>{
+    if(e.pointerType!=='mouse') return;
+    dragging=true;
+    startX=e.clientX;startY=e.clientY;
+    scrollStart=isMobile()?viewport.scrollTop:viewport.scrollLeft;
+    viewport.setPointerCapture(e.pointerId);
+  });
+  viewport.addEventListener('pointermove',e=>{
+    if(!dragging) return;
+    const mobile=isMobile();
+    const delta=mobile?(e.clientY-startY):(e.clientX-startX);
+    if(mobile) viewport.scrollTop=scrollStart-delta;
+    else viewport.scrollLeft=scrollStart-delta;
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(evt=>viewport.addEventListener(evt,()=>{dragging=false;}));
+})();
 
 /* Video — autoplay muted, sound toggle */
 const vid=document.getElementById('officeVideo');
