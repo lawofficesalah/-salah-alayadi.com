@@ -324,6 +324,8 @@ html[dir="ltr"] .ab-badge{left:-16px}
 .svc-card:hover .svc-ico{background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;border-color:transparent;box-shadow:0 5px 18px var(--shp)}
 .svc-card h3{font-size:19px;font-weight:700;color:var(--tx);margin-bottom:9px}
 .svc-short{font-size:16.5px;color:var(--tx2);line-height:1.75}
+.svc-link{display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-size:13.5px;font-weight:700;color:var(--p);position:relative;z-index:2}
+.svc-link:hover{color:var(--pd);text-decoration:underline}
 .svc-detail{font-size:16px;color:var(--tx3);line-height:1.75;max-height:0;opacity:0;overflow:hidden;border-top:1px solid transparent;margin-top:0;padding-top:0;transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .35s ease,margin-top .3s ease,padding-top .3s ease,border-color .3s ease}
 .svc-card.active .svc-detail,.svc-card:hover .svc-detail{max-height:330px;opacity:1;margin-top:10px;padding-top:10px;border-top-color:var(--br)}
 .svc-card.hidden{display:none}
@@ -726,7 +728,8 @@ html[dir="ltr"] .fbtn .tip{right:60px}
         <div class="svc-ico"><i class="fas fa-building-columns"></i></div>
         <h3><span class="ar-text">التقاضي والترافع</span><span class="en-text">Litigation & Advocacy</span></h3>
         <p class="svc-short"><span class="ar-text">تمثيل قانوني احترافي أمام المحاكم الجزائية والمدنية والتجارية والإدارية على مختلف درجاتها.</span><span class="en-text">Professional legal representation before criminal, civil, commercial and administrative courts at all levels.</span></p>
-        <div class="svc-detail"><span class="ar-text">يشمل إعداد المذكرات القانونية المدروسة وصياغة اللوائح الاحتجاجية والردود القانونية، وتمثيل الموكّل في جميع جلسات المحاكمة حتى صدور الحكم النهائي.</span><span class="en-text">Includes preparing well-studied legal briefs, drafting legal responses, and representing clients in all court sessions until the final verdict.</span><br/><a href="criminal-defense.html" style="color:var(--p);font-weight:700;text-decoration:underline"><span class="ar-text">تفاصيل الرد والمرافعة بالقضايا الجنائية ←</span><span class="en-text">Criminal Defense: Response &amp; Pleading →</span></a></div>
+        <a href="criminal-defense.html" class="svc-link" onclick="event.stopPropagation()"><span class="ar-text">تفاصيل الرد والمرافعة بالقضايا الجنائية</span><span class="en-text">Criminal Defense: Response &amp; Pleading</span><i class="fas fa-arrow-left ar-text"></i><i class="fas fa-arrow-right en-text"></i></a>
+        <div class="svc-detail"><span class="ar-text">يشمل إعداد المذكرات القانونية المدروسة وصياغة اللوائح الاحتجاجية والردود القانونية، وتمثيل الموكّل في جميع جلسات المحاكمة حتى صدور الحكم النهائي.</span><span class="en-text">Includes preparing well-studied legal briefs, drafting legal responses, and representing clients in all court sessions until the final verdict.</span></div>
       </div>
 
       <div class="svc-card rv d2" data-cat="companies">
