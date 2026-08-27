@@ -35,8 +35,8 @@ header nav{display:flex;align-items:center;justify-content:space-between;max-wid
 
 .hero-p{padding:56px 0 32px;border-bottom:1px solid var(--br)}
 .hero-p .stg{display:inline-flex;align-items:center;gap:7px;color:var(--p);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
-.hero-p h1{font-size:clamp(24px,4vw,36px);font-weight:800;line-height:1.3;margin-bottom:14px}
-.hero-p p{color:var(--tx2);font-size:15px;max-width:620px}
+.hero-p h1{font-size:clamp(24px,4vw,36px);font-weight:800;line-height:1.3;margin-bottom:14px;text-wrap:balance}
+.hero-p p{color:var(--tx2);font-size:15px;max-width:620px;text-wrap:balance}
 .hero-p .cta-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
 .bm{padding:12px 26px;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px var(--shp)}
 .bo{padding:12px 26px;background:var(--card);color:var(--tx);border:1.5px solid var(--br);border-radius:10px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px}
@@ -44,6 +44,7 @@ header nav{display:flex;align-items:center;justify-content:space-between;max-wid
 main{padding:44px 0 80px}
 .sec{margin-bottom:36px}
 .sec h2{font-size:19px;font-weight:800;color:var(--tx);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec h2 span{text-wrap:balance}
 .sec h2 i{color:var(--p);font-size:15px}
 .sec p{font-size:14.5px;color:var(--tx2)}
 .sec p+p{margin-top:11px}
@@ -68,7 +69,7 @@ main{padding:44px 0 80px}
 .faq-item p{font-size:13.5px;color:var(--tx2)}
 
 .contact-strip{margin-top:44px;background:var(--card);border:1px solid var(--br);border-radius:var(--rl);padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.contact-strip p{font-size:14px;color:var(--tx2)}
+.contact-strip p{font-size:14px;color:var(--tx2);text-wrap:balance}
 .contact-strip a.cta{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;border-radius:9px;font-size:13.5px;font-weight:700}
 
 .related{margin-top:44px}
