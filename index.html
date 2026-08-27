@@ -645,7 +645,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
 
       <div class="rv rr">
         <div class="vbox">
-          <video id="officeVideo" autoplay muted loop playsinline preload="auto">
+          <video id="officeVideo" muted loop playsinline preload="none">
             <source src="hero-video.mp4" type="video/mp4"/>
           </video>
           <button class="sound-btn" id="soundBtn" onclick="toggleSound()" title="تشغيل/إيقاف الصوت" data-al-ar="تشغيل/إيقاف الصوت" data-al-en="Toggle sound">
@@ -975,7 +975,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
     <div class="fg">
       <div>
         <div class="logo" style="margin-bottom:0">
-          <img src="logo-dark.png" alt="الشعار" class="limg" style="display:block"/>
+          <img src="logo-dark.png" alt="الشعار" class="limg" style="display:block" loading="lazy"/>
           <div><div class="fb-nm"><span class="ar-text">مكتب المحامي صلاح العياضي</span><span class="en-text">Salah Aleadhi Law Office</span></div><div class="fb-tg"><span class="ar-text">محاماة واستشارات قانونية</span><span class="en-text">Legal Advocacy & Consultation</span></div></div>
         </div>
         <p class="fb-desc"><span class="ar-text">مكتب قانوني متخصص في المدينة المنورة يقدم أرقى الخدمات القانونية للأفراد والشركات في المملكة العربية السعودية.</span><span class="en-text">A specialized law office in Madinah providing premium legal services to individuals and companies in Saudi Arabia.</span></p>
@@ -1270,8 +1270,9 @@ function toggleSound(){
   vid.muted=!vid.muted;
   soundIco.className=vid.muted?'fas fa-volume-xmark':'fas fa-volume-high';
 }
-/* ensure autoplay */
-vid.play().catch(()=>{});
+/* defer loading/playing the video until its section is actually visible, to avoid wasting bandwidth on page load */
+const vidObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){vid.play().catch(()=>{});vidObs.unobserve(x.target);}});},{threshold:.25});
+vidObs.observe(vid);
 </script>
 </body>
 </html>
