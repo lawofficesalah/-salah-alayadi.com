@@ -1016,7 +1016,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
       </div>
     </div>
     <div class="fbtm">
-      <p><span class="ar-text">© 2025 مكتب المحامي <span class="ac">صلاح العياضي</span>. جميع الحقوق محفوظة.</span><span class="en-text">© 2025 <span class="ac">Salah Aleadhi</span> Law Office. All rights reserved.</span> · <a href="privacy.html" style="color:inherit;text-decoration:underline"><span class="ar-text">سياسة الخصوصية</span><span class="en-text">Privacy Policy</span></a></p>
+      <p><span class="ar-text">© <span class="cyear">2025</span> مكتب المحامي <span class="ac">صلاح العياضي</span>. جميع الحقوق محفوظة.</span><span class="en-text">© <span class="cyear">2025</span> <span class="ac">Salah Aleadhi</span> Law Office. All rights reserved.</span> · <a href="privacy.html" style="color:inherit;text-decoration:underline"><span class="ar-text">سياسة الخصوصية</span><span class="en-text">Privacy Policy</span></a></p>
       <p><i class="fas fa-map-marker-alt" style="color:var(--pl);margin-inline-end:4px"></i><span class="ar-text">المدينة المنورة، المملكة العربية السعودية</span><span class="en-text">Madinah, Saudi Arabia</span></p>
     </div>
   </div>
@@ -1063,6 +1063,9 @@ window.addEventListener('scroll',()=>{
   document.querySelectorAll('#home,#about,#video-sec,#services,#faq,#booking,#contact').forEach(s=>{if(window.scrollY>=s.offsetTop-140)cur=s.id});
   navAs.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+cur)a.classList.add('active')});
 });
+
+/* Auto-updating copyright year */
+document.querySelectorAll('.cyear').forEach(el=>el.textContent=new Date().getFullYear());
 
 /* Hero BG parallax load */
 window.addEventListener('load',()=>document.querySelector('.hero').classList.add('loaded'));
