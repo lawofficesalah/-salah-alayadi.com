@@ -480,18 +480,21 @@ footer{background:var(--nv);color:rgba(255,255,255,.75);padding:52px 0 22px}
 .fbtm .ac{color:#fff}
 
 /* ============================================================ FLOATING ACTION BUTTONS */
-.fbtn{position:fixed;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;z-index:997;transition:var(--ease);text-decoration:none}
-html[dir="rtl"] .fbtn{left:24px}
-html[dir="ltr"] .fbtn{right:24px}
+.fbtn-group{position:fixed;z-index:997;display:flex;flex-direction:column;gap:12px;bottom:26px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.fbtn-group.dragging{cursor:grabbing}
+.fbtn-group.dragging .fbtn{transition:none;transform:none!important}
+html[dir="rtl"] .fbtn-group{left:24px}
+html[dir="ltr"] .fbtn-group{right:24px}
+.fbtn{position:relative;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;transition:var(--ease);text-decoration:none}
 .fbtn:hover{transform:scale(1.1) translateY(-3px)}
 .fbtn .tip{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.72);color:#fff;padding:5px 10px;border-radius:6px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none;transition:var(--ease)}
 html[dir="rtl"] .fbtn .tip{left:60px}
 html[dir="ltr"] .fbtn .tip{right:60px}
 .fbtn:hover .tip{opacity:1}
 
-.fbtn-wa{bottom:26px;background:#25D366;}
+.fbtn-wa{background:#25D366;}
 
-.fbtn-call{bottom:90px;background:#25D366;}
+.fbtn-call{background:#25D366;}
 
 /* ============================================================ REVEAL */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
@@ -1027,6 +1030,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   </div>
 </footer>
 
+<div class="fbtn-group" id="fbtnGroup">
 <a href="tel:+966560064478" class="fbtn fbtn-call" aria-label="اتصال مباشر" data-al-ar="اتصال مباشر" data-al-en="Direct Call">
   <i class="fas fa-phone"></i>
   <span class="tip"><span class="ar-text">اتصال مباشر</span><span class="en-text">Direct Call</span></span>
@@ -1035,6 +1039,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   <i class="fab fa-whatsapp"></i>
   <span class="tip"><span class="ar-text">تواصل واتساب</span><span class="en-text">WhatsApp</span></span>
 </a>
+</div>
 
 <!-- ═══════════════ JS ═══════════════ -->
 <script>
@@ -1281,6 +1286,56 @@ function toggleSound(){
 /* defer loading/playing the video until its section is actually visible, to avoid wasting bandwidth on page load */
 const vidObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){vid.play().catch(()=>{});vidObs.unobserve(x.target);}});},{threshold:.25});
 vidObs.observe(vid);
+
+/* Draggable floating action buttons — free repositioning during the visit, always resets to the default corner on reload/new visit (no saved position) */
+(function(){
+  const grp=document.getElementById('fbtnGroup');
+  if(!grp) return;
+  let sx=0,sy=0,startLeft=0,startTop=0,dragging=false,moved=false;
+  const clamp=(v,min,max)=>Math.min(Math.max(v,min),max);
+
+  grp.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='mouse'&&e.button!==0) return;
+    const r=grp.getBoundingClientRect();
+    sx=e.clientX;sy=e.clientY;startLeft=r.left;startTop=r.top;
+    dragging=true;moved=false;
+    grp.setPointerCapture(e.pointerId);
+  });
+
+  grp.addEventListener('pointermove',e=>{
+    if(!dragging) return;
+    const dx=e.clientX-sx,dy=e.clientY-sy;
+    if(!moved&&Math.hypot(dx,dy)>6){
+      moved=true;
+      grp.classList.add('dragging');
+      grp.style.right='';grp.style.bottom='';
+      grp.style.left=startLeft+'px';grp.style.top=startTop+'px';
+    }
+    if(moved){
+      const w=grp.offsetWidth,h=grp.offsetHeight;
+      grp.style.left=clamp(startLeft+dx,4,window.innerWidth-w-4)+'px';
+      grp.style.top=clamp(startTop+dy,4,window.innerHeight-h-4)+'px';
+    }
+  });
+
+  function endDrag(){
+    if(!dragging) return;
+    dragging=false;
+    grp.classList.remove('dragging');
+    if(moved){
+      const block=ev=>{ev.preventDefault();ev.stopPropagation();};
+      grp.querySelectorAll('a').forEach(a=>a.addEventListener('click',block,{once:true,capture:true}));
+    }
+  }
+  ['pointerup','pointercancel'].forEach(evt=>grp.addEventListener(evt,endDrag));
+
+  window.addEventListener('resize',()=>{
+    if(!grp.style.left) return;
+    const w=grp.offsetWidth,h=grp.offsetHeight;
+    grp.style.left=clamp(parseFloat(grp.style.left),4,window.innerWidth-w-4)+'px';
+    grp.style.top=clamp(parseFloat(grp.style.top),4,window.innerHeight-h-4)+'px';
+  });
+})();
 </script>
 </body>
 </html>
