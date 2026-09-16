@@ -125,8 +125,8 @@ img,video{max-width:100%;display:block}
 ::-webkit-scrollbar-thumb{background:var(--p);border-radius:2px}
 
 /* Lang */
-html[lang="ar"] .en-text,.en-block{display:none!important}
-html[lang="en"] .ar-text,.ar-block{display:none!important}
+html[lang="ar"] .en-text,html[lang="ar"] .en-block{display:none!important}
+html[lang="en"] .ar-text,html[lang="en"] .ar-block{display:none!important}
 html[lang="ar"] .ar-text{display:inline}
 html[lang="ar"] .ar-block{display:block}
 html[lang="en"] .en-text{display:inline}
@@ -223,7 +223,7 @@ html[dir="ltr"] .mmx{left:22px}
 .hdv{width:56px;height:3px;background:linear-gradient(90deg,var(--gold),var(--p));margin:16px auto 22px;border-radius:2px}
 .h-sub{font-size:clamp(14px,1.9vw,17px);color:#fff;margin-bottom:40px;font-weight:300;line-height:1.8;text-wrap:balance}
 
-.h-stats{display:flex;justify-content:center;gap:0;margin-bottom:44px;flex-wrap:wrap}
+.h-stats{display:flex;justify-content:center;margin-bottom:44px;flex-wrap:wrap}
 .ctr{padding:0 40px;text-align:center;border-inline-end:1px solid rgba(255,255,255,.15)}
 .ctr:last-child{border-inline-end:none}
 .ctr .n{font-size:38px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px;}
@@ -530,7 +530,6 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   .rev-card{flex:0 0 auto;width:100%;max-width:none;scroll-snap-align:start}
   .fg{grid-template-columns:1fr;gap:24px}
   .fbtm{flex-direction:column;text-align:center}
-  .h-stats{gap:0}
   .ctr{padding:0 24px}
   .mad-row{gap:8px}
 }
@@ -988,7 +987,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
     <div class="fg">
       <div>
         <div class="logo" style="margin-bottom:0">
-          <img src="logo-dark.png" alt="الشعار" class="limg" style="display:block" loading="lazy"/>
+          <img src="logo-dark.png" alt="الشعار" class="limg" loading="lazy"/>
           <div><div class="fb-nm"><span class="ar-text">مكتب المحامي صلاح العياضي</span><span class="en-text">Salah Aleadhi Law Office</span></div><div class="fb-tg"><span class="ar-text">محاماة واستشارات قانونية</span><span class="en-text">Legal Advocacy & Consultation</span></div></div>
         </div>
         <p class="fb-desc"><span class="ar-text">مكتب قانوني متخصص في المدينة المنورة يقدم أرقى الخدمات القانونية للأفراد والشركات في المملكة العربية السعودية.</span><span class="en-text">A specialized law office in Madinah providing premium legal services to individuals and companies in Saudi Arabia.</span></p>
