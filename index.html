@@ -441,32 +441,32 @@ html[dir="rtl"] .fg- select{background-position:right 14px center;padding-left:1
 
 /* ============================================================ REVIEWS */
 .rev-sec{margin-top:56px;padding-top:48px;border-top:1px solid var(--br)}
-.rev-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:28px}
+.rev-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .rev-tt h3{font-size:24px;font-weight:800;color:var(--tx);margin-bottom:6px;text-wrap:balance}
-.rev-score{display:flex;align-items:center;gap:8px;font-size:16px;color:var(--tx2)}
-.rev-score .stars{display:inline-flex;flex-shrink:0}
-.rev-score .stars i{color:#F5A623;font-size:15px}
-.rev-score b{color:var(--tx);font-weight:800}
+
+
+
+
+.rev-description{font-size:14px;line-height:1.7;color:var(--tx2)}
 .rev-all{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border:1.5px solid var(--br);border-radius:9px;font-size:15px;font-weight:600;color:var(--tx2);transition:var(--ease);text-decoration:none;white-space:nowrap}
 .rev-all:hover{border-color:var(--p);color:var(--p)}
 
-.rev-carousel{position:relative}
-.rev-arr{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:var(--card);border:1px solid var(--br);color:var(--tx2);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;z-index:5;transition:var(--ease)}
-.rev-arr:hover{border-color:var(--p);color:var(--p);background:var(--bg2)}
-.rev-arr-l{left:-8px}
-.rev-arr-r{right:-8px}
-.rev-viewport{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
-.rev-viewport::-webkit-scrollbar{display:none}
-.rev-viewport:active{cursor:grabbing}
-.rev-track{display:flex;gap:16px;width:max-content}
-.rev-card{background:var(--card);border:1px solid var(--br);border-radius:var(--rl);padding:22px;flex:0 0 calc((100vw - 24px*2 - 16px*3)/4);max-width:calc((1180px - 16px*3)/4);scroll-snap-align:start;display:flex;flex-direction:column;min-height:220px}
-.rev-top{display:flex;align-items:center;gap:11px;margin-bottom:12px}
-.rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--pd));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
-.rev-nm{font-size:15.5px;font-weight:700;color:var(--tx)}
-.rev-dt{font-size:13px;color:var(--tx3)}
-.rev-stars{margin-bottom:8px}
-.rev-stars i{color:#F5A623;font-size:13px}
-.rev-txt{font-size:15.5px;color:var(--tx2);line-height:1.85;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ============================================================ FOOTER */
 footer{background:var(--nv);color:rgba(255,255,255,.75);padding:52px 0 22px}
@@ -518,7 +518,7 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   .fg{grid-template-columns:1fr 1fr}
   .fg>*:first-child{grid-column:1/-1}
   .v-wrap{grid-template-columns:1fr;gap:32px}
-  .rev-card{flex-basis:calc((100vw - 24px*2 - 16px*2)/3);max-width:calc((1180px - 16px*2)/3)}
+
 }
 @media(max-width:768px){
   section{padding:64px 0}
@@ -528,10 +528,10 @@ html[dir="ltr"] .fbtn .tip{right:60px}
   .ct-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
   .rev-head{flex-direction:column;align-items:flex-start}
-  .rev-arr{display:none}
-  .rev-viewport{overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;max-height:calc(3*220px + 2*16px)}
-  .rev-track{flex-direction:column;width:auto}
-  .rev-card{flex:0 0 auto;width:100%;max-width:none;scroll-snap-align:start}
+
+
+
+
   .fg{grid-template-columns:1fr;gap:24px}
   .fbtm{flex-direction:column;text-align:center}
   .ctr{padding:0 24px}
@@ -962,20 +962,10 @@ html[dir="ltr"] .fbtn .tip{right:60px}
     <div class="rev-sec rv">
       <div class="rev-head">
         <div class="rev-tt">
-          <h3><span class="ar-text">آراء عملائنا على خرائط Google</span><span class="en-text">What Our Clients Say on Google</span></h3>
-          <div class="rev-score">
-            <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-            <span><b>5.0</b> <span class="ar-text">من 61 تقييمًا</span><span class="en-text">from 61 reviews</span></span>
-          </div>
+          <h3><span class="ar-text">تقييمات المكتب على Google</span><span class="en-text">Office Reviews on Google</span></h3>
+          <p class="rev-description"><span class="ar-text">اطّلع على تقييمات وتجارب زوّار المكتب على خرائط Google.</span><span class="en-text">Read reviews and experiences shared by office visitors on Google Maps.</span></p>
         </div>
-        <a href="https://maps.app.goo.gl/9p5YyvudYT1zTHnUA" target="_blank" rel="noopener noreferrer" class="rev-all"><i class="fab fa-google"></i><span class="ar-text">شاهد كل التقييمات</span><span class="en-text">See all reviews</span></a>
-      </div>
-      <div class="rev-carousel">
-        <button class="rev-arr rev-arr-l" id="revArrL" aria-label="السابق" data-al-ar="السابق" data-al-en="Previous"><i class="fas fa-chevron-left"></i></button>
-        <div class="rev-viewport" id="revViewport">
-          <div class="rev-track" id="revTrack"></div>
-        </div>
-        <button class="rev-arr rev-arr-r" id="revArrR" aria-label="التالي" data-al-ar="التالي" data-al-en="Next"><i class="fas fa-chevron-right"></i></button>
+        <a href="https://maps.app.goo.gl/9p5YyvudYT1zTHnUA" target="_blank" rel="noopener noreferrer" class="rev-all"><i class="fab fa-google" aria-hidden="true"></i><span class="ar-text">عرض التقييمات على Google</span><span class="en-text">View Reviews on Google</span></a>
       </div>
     </div>
   </div>
@@ -1172,112 +1162,6 @@ document.getElementById('bkForm').addEventListener('submit',function(e){
     :`Hello,\n\n📋 *Legal Consultation Request*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n⚖️ Type: ${type}${msg?'\n📝 Details: '+msg:''}\n\nPlease contact me to schedule an appointment. Thank you.`;
   window.open('https://wa.me/966560064478?text='+encodeURIComponent(txt),'_blank');
 });
-
-/* Reviews Carousel */
-(function(){
-  const REVIEWS=[
-    {i:'م',n:'ماجد البلوشي',da:'قبل شهر',de:'1 month ago',t:'الله يعطيه العافية، كنت محكوم في قضية أحوال شخصية (فسخ نكاح)، وبعدها وكلته يكتب لي اعتراض على الحكم اللي صدر ضدي فتحوا لنا ثلاث جلسات استئناف، وحضرها كلها، وكان يتابع القضية أول بأول ويشرح لي كل خطوة، ولله الحمد كسبنا القضية وانقلب الحكم.'},
-    {i:'M',n:'Mohammed',da:'قبل 9 أشهر',de:'9 months ago',t:'ماشاء الله تبارك الله، فاهم المكتب في الأوقاف والصياغة والشروط، ودقة في النظر في المعاني العميقة شرعًا وقانونًا ومتابعة مميزة، وفهمت موضوع الوقف كامل والوصية وشرح دراسة صك الوقفية، وكسبوا لي دعوى منازعة.'},
-    {i:'ب',n:'Beko',da:'قبل 9 أشهر',de:'9 months ago',t:'استفدت من المحامي صلاح العياضي في موضوع تقسيم التركات وطريقة التعامل مع الورثة، وللأمانة استفدت كثيرًا ونبهني عن نقاط كثيرة ما كنت أعرفها، وملم ماشاء الله في القانون والمحاماة، وأشكره جزيل الشكر.'},
-    {i:'A',n:'Abood Y',da:'قبل سنة',de:'1 year ago',t:'محامي مبدع متميز يعجز الكلام في وصفه، بفضل الله ثم بفضله وحنكته كسبت قضيتان مقامتان على إحدى الشركات التمويلية عام 1442هـ.'},
-    {i:'A',n:'Asim Sandokji',da:'قبل 10 أشهر',de:'10 months ago',t:'طلبنا مع الشركاء عمل عقد تنازل عن الحصص في الشركة، وأعجبني سرعة إنجاز المهمة والاحترافية في صياغة العقد ومناسبة التكلفة لذلك.'},
-    {i:'ي',n:'يوسف',da:'قبل 10 أشهر',de:'10 months ago',t:'طلبنا استشارة بخصوص عقد شركة لمجموعة شركاء وصياغة العقد، وما قصّر في التوضيح للأنظمة وإنجاز الخدمة بسرعة كبيرة وبتكلفة معقولة.'},
-    {i:'F',n:'Fa',da:'قبل 6 أشهر',de:'6 months ago',t:'قدّمت استشارة جنائية وحصلت عليها، وكان التعامل جدًا احترافي من الأستاذ صلاح، ألف شكر له، وأنصح بالتعامل معه جدًا، وشكر خاص للأخ لقمان.'},
-    {i:'ص',n:'صبحى صبحى',da:'قبل شهرين',de:'2 months ago',t:'من خيرة المحامين، ما شاء الله تبارك الله، طالب لي بمستحقاتي واستلمتها كاملة، بارك الله في جهودكم وعلمكم.'},
-    {i:'ب',n:'بدر الحربي',da:'قبل سنة',de:'1 year ago',t:'ما شاء الله تبارك الله، الأستاذ صلاح ما قصّر معي، استشرته في موضوع قضية ووجّهني للحل الأمثل وشرح لي جميع الأشياء والنقاط، ولم يأخذ مني ريال واحد. فاهم شغله والله يوفقه.'},
-    {i:'O',n:'Omar Alsufyani',da:'قبل سنة',de:'1 year ago',t:'أقدّم شكري وتقديري للأستاذ والمحامي صلاح العياضي لقاء تعامله الراقي معي أثناء وجود قضية ابني لديهم، فكان نعم الرجل القانوني المدرك لما يقوم به، ونعم الأخلاق.'}
-  ];
-
-  const track=document.getElementById('revTrack');
-  const viewport=document.getElementById('revViewport');
-  if(!track||!viewport) return;
-
-  function cardHTML(r){
-    return '<div class="rev-card"><div class="rev-top"><div class="rev-av">'+r.i+'</div><div><div class="rev-nm">'+r.n+'</div><div class="rev-dt"><span class="ar-text">'+r.da+'</span><span class="en-text">'+r.de+'</span></div></div></div><div class="rev-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="rev-txt">'+r.t+'</p></div>';
-  }
-  track.innerHTML = REVIEWS.map(cardHTML).join('') + REVIEWS.map(cardHTML).join('');
-
-  const total=REVIEWS.length;
-  let paused=false, resumeTimer, timer, wrapTimer;
-  const arrL=document.getElementById('revArrL');
-  const arrR=document.getElementById('revArrR');
-
-  function isMobile(){ return window.innerWidth<=768; }
-  function stepPx(){
-    const first=track.querySelector('.rev-card');
-    if(!first) return 0;
-    const gap=parseFloat(getComputedStyle(track).gap)||16;
-    return isMobile()?(first.offsetHeight+gap):(first.offsetWidth+gap);
-  }
-
-  /* silently wraps scroll position back into range once a full set has been crossed,
-     works regardless of what triggered the scroll (autoplay, arrows, or drag) */
-  function scheduleWrapCheck(){
-    clearTimeout(wrapTimer);
-    wrapTimer=setTimeout(()=>{
-      const mobile=isMobile();
-      const setW=total*stepPx();
-      if(!setW) return;
-      const pos=mobile?viewport.scrollTop:viewport.scrollLeft;
-      let next=null;
-      if(pos<=-setW) next=pos+setW;
-      else if(pos>=setW) next=pos-setW;
-      if(next!==null){
-        viewport.style.scrollBehavior='auto';
-        if(mobile) viewport.scrollTop=next; else viewport.scrollLeft=next;
-        viewport.style.scrollBehavior='';
-      }
-    },550);
-  }
-
-  function moveBy(sign){
-    const mobile=isMobile();
-    const step=stepPx();
-    if(mobile) viewport.scrollBy({top:sign*step,behavior:'smooth'});
-    else viewport.scrollBy({left:sign*step,behavior:'smooth'});
-    scheduleWrapCheck();
-  }
-
-  function advance(){
-    if(paused) return;
-    const mobile=isMobile();
-    const sign=mobile?1:(html.dir==='rtl'?-1:1);
-    moveBy(sign);
-  }
-  timer=setInterval(advance,3800);
-
-  function pauseThenResume(){
-    paused=true;
-    clearInterval(timer);
-    clearTimeout(resumeTimer);
-    resumeTimer=setTimeout(()=>{paused=false;timer=setInterval(advance,3800);},5000);
-  }
-  ['pointerdown','wheel','touchstart'].forEach(evt=>viewport.addEventListener(evt,pauseThenResume,{passive:true}));
-  viewport.addEventListener('mouseenter',()=>{paused=true;clearInterval(timer);});
-  viewport.addEventListener('mouseleave',()=>{paused=false;clearInterval(timer);timer=setInterval(advance,3800);});
-
-  /* manual left/right arrow buttons — literal screen-position navigation, independent of language */
-  if(arrL) arrL.addEventListener('click',()=>{pauseThenResume();moveBy(-1);});
-  if(arrR) arrR.addEventListener('click',()=>{pauseThenResume();moveBy(1);});
-
-  /* mouse drag-to-scroll (touch already gets native swipe) */
-  let dragging=false,startX=0,startY=0,scrollStart=0;
-  viewport.addEventListener('pointerdown',e=>{
-    if(e.pointerType!=='mouse') return;
-    dragging=true;
-    startX=e.clientX;startY=e.clientY;
-    scrollStart=isMobile()?viewport.scrollTop:viewport.scrollLeft;
-    viewport.setPointerCapture(e.pointerId);
-  });
-  viewport.addEventListener('pointermove',e=>{
-    if(!dragging) return;
-    const mobile=isMobile();
-    const delta=mobile?(e.clientY-startY):(e.clientX-startX);
-    if(mobile) viewport.scrollTop=scrollStart-delta;
-    else viewport.scrollLeft=scrollStart-delta;
-  });
-  ['pointerup','pointercancel','pointerleave'].forEach(evt=>viewport.addEventListener(evt,()=>{dragging=false;scheduleWrapCheck();}));
-})();
 
 /* Video — autoplay muted, sound toggle */
 const vid=document.getElementById('officeVideo');
